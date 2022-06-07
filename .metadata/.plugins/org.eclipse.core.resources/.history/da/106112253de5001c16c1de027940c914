@@ -1,0 +1,24 @@
+package cliente.aplicacao;
+
+import java.sql.Date;
+
+import dao.ClientesFDAO;
+import dto.ClientesDTO;
+
+public class AddCliente {
+
+	public static void main(String[] args) {
+
+		ClientesFDAO clientesDAO = new ClientesFDAO();
+		
+		ClientesDTO clientesDTO = new ClientesDTO();
+		clientesDTO.setNome_cliente_F("Dacio Salvador");
+		clientesDTO.setCpf("456.455.456-52");
+		clientesDTO.setData_cad_F(new Date(clientesDTO.getData_cad_F().getTime()));
+		
+		
+		clientesDAO.inserir(clientesDTO);
+
+	}
+
+}

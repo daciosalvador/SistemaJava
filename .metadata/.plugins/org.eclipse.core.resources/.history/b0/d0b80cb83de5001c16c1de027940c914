@@ -1,0 +1,54 @@
+package dto;
+
+import java.util.Date;
+
+
+
+public class ClientesDTO{
+	
+	private int id_cliente_F;
+    private String nome_cliente_F;
+    private String cpf;
+    private String celular;
+    private Date data_cad_F;
+    private EnderecoDTO enderecoDTO;
+    
+	public int getId_cliente_F() {
+		return id_cliente_F;
+	}
+	public void setId_cliente_F(int id_cliente_F) {
+		this.id_cliente_F = id_cliente_F;
+	}
+	public String getNome_cliente_F() {
+		return nome_cliente_F;
+	}
+	public void setNome_cliente_F(String nome_cliente_F) {
+		this.nome_cliente_F = nome_cliente_F;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getCelular() {
+		return celular;
+	}
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+	public Date getData_cad_F() {
+		return data_cad_F;
+	}
+	public void setData_cad_F(Date data_cad_F) {
+		this.data_cad_F = data_cad_F;
+	}
+	public EnderecoDTO getEnderecoDTO() {
+		return enderecoDTO;
+	}
+	public void setEnderecoDTO(EnderecoDTO enderecoDTO) {
+		this.enderecoDTO = enderecoDTO;
+	}
+
+    
+}

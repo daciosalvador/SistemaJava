@@ -1,0 +1,31 @@
+package cliente.aplicacao;
+
+import java.util.Date;
+
+import dao.ClientesFDAO;
+import dao.ContaDAO;
+import dto.ClientesDTO;
+import dto.ContaDTO;
+
+
+
+public class AddCliente {
+
+
+	public static void main(String[] args) throws Exception {
+		
+		ClientesFDAO clientesDAO = new ClientesFDAO();
+		 
+		
+		 //Cria um contato e salva no banco
+		 ClientesDTO clientes = new ClientesDTO();
+		 clientes.setNome_cliente_F("PedroHenrique");
+		 clientes.setCpf("321.555.123-22");
+		 clientes.setCelular("98423-45632");
+
+		 
+
+		 clientesDAO.inserir(clientes);	
+
+	}
+}

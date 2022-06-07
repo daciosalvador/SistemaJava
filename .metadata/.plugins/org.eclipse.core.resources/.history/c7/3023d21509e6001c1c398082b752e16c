@@ -1,0 +1,30 @@
+package dto;
+
+public class EnderecoDTO {
+	
+	private Integer idEndereco;
+	private String logadouro;
+	private String bairro;
+	
+	public Integer getIdEndereco() {
+		return idEndereco;
+	}
+	public void setIdEndereco(Integer idEndereco) {
+		this.idEndereco = idEndereco;
+	}
+	public String getLogadouro() {
+		return logadouro;
+	}
+	public void setLogadouro(String logadouro) {
+		this.logadouro = logadouro;
+	}
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	
+	
+
+}

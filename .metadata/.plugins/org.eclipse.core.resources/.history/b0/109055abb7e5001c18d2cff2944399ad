@@ -1,0 +1,48 @@
+package cliente.aplicacao;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import dao.ClientesFDAO;
+import dto.ClientesDTO;
+import dto.ContaDTO;
+
+public class ListarClientes {
+
+	public static void main(String[] args) {
+
+		ClientesFDAO clientesDAO = new ClientesFDAO();
+
+		
+
+		ClientesDTO c = clientesDAO.getCliente("321.555.123-22");
+
+		System.out.println("NOME: " + c.getNome_cliente_F());
+		System.out.println("Cliente Desde: " + c.getData_cad_F());
+		
+
+		List<ContaDTO> contas = c.getContacliente();
+
+		double saldo = 0;
+
+		for (ContaDTO cc : contas) {
+			
+			System.out.println("n° conta: " + cc.getId_conta());
+			saldo = cc.getSaldo();
+			System.out.println("Saldo: " + saldo);
+
+		}
+
+		
+		System.out.println("------------------------------");
+		
+		for(ClientesDTO cp : clientesDAO.getClientes()) {
+			
+			System.out.println("NOME: " + cp.getNome_cliente_F());
+		
+		}
+
+	}
+
+}

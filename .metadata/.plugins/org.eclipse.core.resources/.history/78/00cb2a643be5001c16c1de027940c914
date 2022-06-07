@@ -1,0 +1,34 @@
+package cliente.aplicacao;
+
+
+
+
+import dao.ClientesFDAO;
+import dao.ContaDAO;
+import dto.ClientesDTO;
+import dto.ContaDTO;
+import dto.EnderecoDTO;
+
+
+public class AddConta {
+	
+	public static void main(String[] args) throws Exception {
+		
+		
+		ClientesFDAO clientesDAO = new ClientesFDAO();
+		 
+		
+		 //Cria um contato e salva no banco
+		 EnderecoDTO endereco = new EnderecoDTO();
+		 endereco.setBairro("Olinda");
+		 endereco.setLogadouro("Quadra A2");
+
+
+		 
+
+		 clientesDAO.insereEndereco(endereco);	
+
+
+	}
+}
+

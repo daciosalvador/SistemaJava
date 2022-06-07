@@ -1,0 +1,109 @@
+package dao;
+
+import java.sql.Connection;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.ClientesDTO;
+import dto.ContaDTO;
+import javaConnection.ConnectionBdo;
+
+public class ClientesFDAO {
+	Connection con = null;
+	PreparedStatement pstm = null;
+	
+
+	public void salvar(ClientesDTO clientes) throws Exception {
+		
+		
+
+		con = ConnectionBdo.creatConnectionToOracle();
+		String sql = "INSERT INTO clientesf(nome_cliente_f, cpf, celular, email, endereco, num_end, bairro, cidade, estado, data_cad_F, categoria) "
+				+ "VALUES (?, ? ,? , ?, ?, ?, ?, ?, ?, ?, ?)";		
+		
+		
+		try {			
+			
+			pstm = con.prepareStatement(sql);			
+			pstm.setString(1, clientes.getNome_cliente_F());
+			pstm.setString(2, clientes.getCpf());			
+			pstm.setString(3, clientes.getCelular());
+			pstm.setString(4, clientes.getEmail());
+			pstm.setString(5, clientes.getEndereco());
+			pstm.setString(6, clientes.getNum_end());
+			pstm.setString(7, clientes.getBairro());
+			pstm.setString(8, clientes.getCidade());
+			pstm.setString(9, clientes.getEstado());
+			pstm.setDate(10,  new Date(clientes.getData_cad_F().getTime()));
+			pstm.setString(11, clientes.getCategoria());
+			
+			
+			
+			
+			pstm.execute();	
+			pstm.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+	}
+	
+	
+	
+	public void update(ClientesDTO clientes) throws Exception {		
+		
+		
+		
+		String sql = "UPDATE clientesf SET nome_cliente_f = ?, celular = ?, email = ?"
+				+ "WHERE id_cliente_f = ?";		
+		
+		
+		try {			
+			con = ConnectionBdo.creatConnectionToOracle();
+			pstm = con.prepareStatement(sql);			
+			pstm.setString(1, clientes.getNome_cliente_F());			
+			pstm.setString(2, clientes.getCelular());
+			pstm.setString(3, clientes.getEmail());			
+	        pstm.setInt(4, clientes.getId_cliente_F());
+			
+			
+			pstm.execute();
+			pstm.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	 
+
+	}
+	public void updateEndereco(ClientesDTO clientes) throws Exception {		
+		
+		
+		String sql = "UPDATE clientesf SET endereco = ?, num_end = ?, bairro = ?, cidade = ?, estado = ?"
+				+ "WHERE id_cliente_F = ?";		
+		
+		
+		try {			
+			con = ConnectionBdo.creatConnectionToOracle();
+			pstm = con.prepareStatement(sql);			
+			pstm.setString(1, clientes.getEndereco());			
+			pstm.setString(2, clientes.getNum_end());
+			pstm.setString(3, clientes.getBairro());
+			pstm.setString(4, clientes.getCidade());
+			pstm.setString(5, clientes.getEstado());
+	        pstm.setLong(6, clientes.getId_cliente_F());
+			
+			
+			pstm.execute();	
+			pstm.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

@@ -1,0 +1,53 @@
+package cliente.aplicacao;
+
+import java.util.Date;
+
+import dao.ClientesFDAO;
+import dao.ContaDAO;
+import dto.ClientesDTO;
+import dto.ContaDTO;
+
+
+
+public class AddCliente {
+
+	public void addCliente() throws Exception {
+		
+		
+		ClientesFDAO contaDAO = new ClientesFDAO();
+		 //Cria um contato e salva no banco
+		 ContaDTO contas = new ContaDTO();
+		 contas.setSaldo(5555.32);
+		 contas.setTipoConta("Pessoa Fisica");
+		 contas.setTaxa(0.75);
+		 
+		 
+		 contaDAO.salvarConta(contas); 
+
+	}
+
+	public static void main(String[] args) throws Exception {
+		
+		ClientesFDAO clientesDAO = new ClientesFDAO();
+		 
+		
+		 //Cria um contato e salva no banco
+		 ClientesDTO clientes = new ClientesDTO();
+		 clientes.setNome_cliente_F("PedroHenrique");
+		 clientes.setCpf("321.555.123-22");
+		 clientes.setCelular("98423-45632");
+		 clientes.setEmail("henriquepaulo@gmail.com");
+		 clientes.setEndereco("Av Mario Melo");
+		 clientes.setNum_end("555");
+		 clientes.setBairro("Boa Viagem");
+		 clientes.setCidade("Recife");
+		 clientes.setEstado("Pernambuco");
+		 clientes.setData_cad_F(new Date());
+		 clientes.setCategoria("Pessoa Fisica");
+		 
+
+		 clientesDAO.salvar(clientes);	
+
+	}
+
+}

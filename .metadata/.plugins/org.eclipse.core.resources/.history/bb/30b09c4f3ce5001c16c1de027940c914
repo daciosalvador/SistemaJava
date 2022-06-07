@@ -1,0 +1,5 @@
+package cliente.aplicacao;
+
+public class AddCliente {
+
+}

@@ -1,0 +1,70 @@
+package dao;
+
+import java.sql.Connection;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.ClientesDTO;
+import dto.ContaDTO;
+import dto.EnderecoDTO;
+import javaConnection.ConnectionBdo;
+
+public class ClientesFDAO {
+	Connection con = null;
+	PreparedStatement pstm = null;
+	
+	
+
+
+	public void inserir(ClientesDTO clientesDTO)  {
+		try {
+			int chaveEnd = insereEndereco(clientesDTO.getEnderecoDTO());
+
+			con = ConnectionBdo.creatConnectionToOracle();
+			String sql = "INSERT INTO CLIENTESF (nome_cliente_f, cpf, celular , data_cad_f, COD_ENDERECO) " +
+					"VALUES(?, ?, ?, ?, ?)";
+			
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, clientesDTO.getNome_cliente_F());
+			pstm.setString(2, clientesDTO.getCpf());
+			pstm.setString(3, clientesDTO.getCelular());
+			pstm.setDate(4, new Date(clientesDTO.getData_cad_F().getTime()));
+			
+			
+			pstm.execute();
+			con.close();
+		} catch (Exception e) {			
+			
+		}
+	}
+		
+	public int insereEndereco(EnderecoDTO enderecoDTO){
+		int chave = 0;
+		try {
+			
+			con = ConnectionBdo.creatConnectionToOracle();
+			String sql = "INSERT INTO Endereco(LOGADOURO, BAIRRO) " +
+					"VALUES(?, ?)";
+			pstm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstm.setString(1, enderecoDTO.getLogadouro());
+			pstm.setString(2, enderecoDTO.getBairro());			
+			pstm.execute();
+			ResultSet result = pstm.getGeneratedKeys();
+			if(result.next()){
+			
+				chave = result.getInt(1);
+			}
+			con.close();
+		} catch (Exception e) {
+			
+		}
+		return chave;		
+		
+	}
+}
+		

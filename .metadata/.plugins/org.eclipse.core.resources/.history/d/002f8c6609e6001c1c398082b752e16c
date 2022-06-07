@@ -1,0 +1,52 @@
+package cliente.aplicacao;
+
+
+import java.util.List;
+
+import dao.ClientesFDAO;
+import dto.ClientesDTO;
+import dto.ContaDTO;
+
+public class ListarClientes {
+
+	public static void main(String[] args) throws Exception {
+
+		ClientesFDAO clientesDAO = new ClientesFDAO();
+
+		ClientesDTO c = clientesDAO.getCliente("104.345.432-23");
+
+		System.out.println("NOME: " + c.getNome_cliente_F());
+		System.out.println("Cliente Desde: " + c.getData_cad_F());
+		System.out.println("Bairro: " + c.getBairro());
+		
+
+		List<ContaDTO> contas = c.getContacliente();
+		ContaDTO conta1 = new ContaDTO();
+		
+		double saldo = 0;
+
+		for (ContaDTO cc : contas) {
+			
+			System.out.println("Num Conta: " + cc.getId_conta());
+			saldo = cc.getSaldo();
+			System.out.println("Saldo: " + saldo);
+			if (cc.saque(500.55)) {
+				System.out.println("Saque Realizado");	
+				conta1.setId_conta(1);
+				conta1.setSaldo(cc.getSaldo());
+				clientesDAO.updateConta(conta1);
+				System.out.println("Saque Realizado ");	
+			} else {
+				System.out.println("Saldo Insuficiente");
+			}
+			System.out.println("Saldo Insuficiente" + cc.getSaldo());
+		}
+		
+		
+		System.out.println("------------------------------");
+		
+		
+
+	}
+
+}
