@@ -1,6 +1,7 @@
 package cliente.aplicacao;
 
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dao.ClientesFDAO;
@@ -10,7 +11,8 @@ import dto.ContaDTO;
 public class ListarClienteX {
 	// Lista Cliente e conta vinculada pelo CPF
 	public static void main(String[] args) throws Exception {
-
+		
+		DecimalFormat df = new DecimalFormat("###,###.00");
 		ClientesFDAO clientesDAO = new ClientesFDAO();
 
 		ClientesDTO c = clientesDAO.getCliente("104.345.432-23"); // Alterar cpf para localizar cliente
@@ -29,7 +31,7 @@ public class ListarClienteX {
 			
 			System.out.println("Num Conta: " + cc.getId_conta());
 			saldo = cc.getSaldo();
-			System.out.println("Saldo: " + saldo);
+			System.out.println("Saldo: R$ " + df.format(saldo));
 			
 		}
 		System.out.println("------------------------------------------------------------------------------------------");
