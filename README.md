@@ -26,7 +26,7 @@ Cadastro do Cliente
 
 Saldo do cliente X
 
-![image](https://user-images.githubusercontent.com/91515415/172294883-83cef334-e97c-4eb0-b001-5292af6e36fa.png)
+![image](https://user-images.githubusercontent.com/91515415/172297245-fc466218-aa9d-44db-ad43-b2b8b3d94678.png)
 
 Saldo de todos os clientes
 
