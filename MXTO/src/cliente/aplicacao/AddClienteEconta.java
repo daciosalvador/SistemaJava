@@ -21,8 +21,8 @@ public class AddClienteEconta {
 		
 	    // Cria um cliente
 		ClientesDTO cliente = new ClientesDTO();
-		cliente.setNome_cliente_F("Roberta Maria");
-		cliente.setCpf("778.555.444-20");
+		cliente.setNome_cliente_F("Pedro Paulo");
+		cliente.setCpf("551.222.444-20");
 		cliente.setCelular("87412-85214");
 		cliente.setEmail("robertamaria@gmail.com");
 		cliente.setEndereco("Av Parnamirim");
@@ -48,7 +48,8 @@ public class AddClienteEconta {
 
 		try {
 			clientesDAO.salvar(cliente);
-			System.out.println("Cliente e conta adcionados com sucesso!");
+			System.out.printf("Cliente: %s adicionado(a) com sucesso!\nConta cadastro: %s", cliente.getNome_cliente_F(), conta.getTipoConta());
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

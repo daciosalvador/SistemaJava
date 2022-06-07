@@ -32,7 +32,7 @@ public class ListarClienteX {
 			System.out.println("Saldo: " + saldo);
 			
 		}
-		System.out.println("------------------------------");
+		System.out.println("------------------------------------------------------------------------------------------");
 		
 		
 
